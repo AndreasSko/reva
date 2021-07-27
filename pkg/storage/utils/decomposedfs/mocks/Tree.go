@@ -277,7 +277,7 @@ func (_m *Tree) Setup(owner string) error {
 }
 
 // WriteBlob provides a mock function with given fields: key, reader
-func (_m *Tree) WriteBlob(key string, reader io.Reader) error {
+func (_m *Tree) WriteBlob(key string, size int64, reader io.Reader) error {
 	ret := _m.Called(key, reader)
 
 	var r0 error

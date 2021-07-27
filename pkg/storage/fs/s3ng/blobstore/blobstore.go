@@ -59,8 +59,8 @@ func New(endpoint, region, bucket, accessKey, secretKey string) (*Blobstore, err
 }
 
 // Upload stores some data in the blobstore under the given key
-func (bs *Blobstore) Upload(key string, reader io.Reader) error {
-	_, err := bs.client.PutObject(context.Background(), bs.bucket, key, reader, -1, minio.PutObjectOptions{ContentType: "application/octet-stream"})
+func (bs *Blobstore) Upload(key string, size int64, reader io.Reader) error {
+	_, err := bs.client.PutObject(context.Background(), bs.bucket, key, reader, size, minio.PutObjectOptions{ContentType: "application/octet-stream"})
 
 	if err != nil {
 		return errors.Wrapf(err, "could not store object '%s' into bucket '%s'", key, bs.bucket)

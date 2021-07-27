@@ -67,7 +67,7 @@ var _ = Describe("Blobstore", func() {
 
 	Describe("Upload", func() {
 		It("writes the blob", func() {
-			err := bs.Upload(key, bytes.NewReader(data))
+			err := bs.Upload(key, -1, bytes.NewReader(data))
 			Expect(err).ToNot(HaveOccurred())
 
 			writtenBytes, err := ioutil.ReadFile(blobPath)
